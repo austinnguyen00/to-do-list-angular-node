@@ -11,11 +11,11 @@
   font-size: 1em;
   font-family: inherit;
 
-  :focus {
+  &:focus {
     outline: none;
   }
 
-  :active {
+  &:active {
     transform: scale(0.98);
   }
 }
