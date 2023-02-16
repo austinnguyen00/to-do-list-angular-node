@@ -1,13 +1,24 @@
 .task {
-  background: #f4f4f4;
-  margin: 5px;
+  margin: 20px 5px;
   padding: 10px 20px;
-  cursor: pointer;
+  // cursor: pointer;
+  -webkit-box-shadow: 1px 1px 10px 1px rgba(27, 27, 27, 0.25);
+  box-shadow: 1px 1px 10px 1px rgba(27, 27, 27, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   h3 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  button {
+    color: purple;
+    &:hover {
+      background-color: #f3f3f3;
+    }
   }
 }
 

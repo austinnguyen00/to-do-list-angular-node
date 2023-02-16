@@ -1,6 +1,15 @@
 <div [ngClass]="{ reminder: task.reminder }" class="task">
-  <h3>
-    {{ task.text }}
-  </h3>
-  <p>{{ task.day }}</p>
+  <div class="task-content">
+    <h3>
+      {{ task.text }}
+    </h3>
+    <p>{{ task.day }}</p>
+  </div>
+  <button
+    (click)="translate(task)"
+    mat-icon-button
+    aria-label="Example icon button with a home icon"
+  >
+    <mat-icon>translate</mat-icon>
+  </button>
 </div>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Task } from 'src/Task';
+import { Task } from 'src/app/shared/models/Task';
 
 @Component({
   selector: 'app-task-item',
@@ -13,4 +13,10 @@ export class TaskItemComponent {
     day: 'May 5th at 2:30pm',
     reminder: true,
   };
+
+
+  // Function to translate text 
+  translate(task: Task): void {
+    console.log('Translating')
+  }
 }
