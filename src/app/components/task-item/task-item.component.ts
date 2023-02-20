@@ -11,7 +11,6 @@ export class TaskItemComponent {
   @Input() task: Task = {
     id: 1,
     text: 'Doctors Appointment',
-    day: 'May 5th at 2:30pm',
     reminder: true,
   };
   @Input() language: string = 'English';
