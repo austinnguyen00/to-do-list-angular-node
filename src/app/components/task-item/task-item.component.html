@@ -5,11 +5,20 @@
     </h3>
     <p>{{ task.day }}</p>
   </div>
-  <button
-    (click)="translate(task)"
-    mat-icon-button
-    aria-label="Example icon button with a home icon"
-  >
-    <mat-icon>translate</mat-icon>
-  </button>
+
+  <div class="task-translate">
+    <button (click)="translate(task)" mat-icon-button>
+      <mat-icon>translate</mat-icon>
+    </button>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Language</mat-label>
+      <!-- Two way bindings so that we can show the initial value with [] and pass down chaging value with () -->
+      <mat-select [(value)]="language">
+        <mat-option *ngFor="let language of languages" [value]="language">
+          {{ language }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
