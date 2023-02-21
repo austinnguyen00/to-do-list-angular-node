@@ -20,4 +20,13 @@ export class TasksComponent {
       .getTasks()
       .subscribe(data => this.tasks = data);
   }
+
+  addTask(task: Task) {
+    // Subscribe to the return observable to get the added task and
+    // add/push the task to our list of tasks
+    this.taskService
+      .addTask(task)
+      .subscribe(task => this.tasks.push(task));
+    console.log("Tasks:", this.tasks);
+  }
 }
