@@ -28,7 +28,10 @@ app.use(cors({
 app.get('/', (req, res) => {
   res.send("Index!");
 })
+
 app.get('/api/tasks', taskController.getTasks);
+app.post('/api/tasks', taskController.addTask);
+
 app.post('/api/translate', translateController.translateTask)
 
 // SERVER CONFIG
