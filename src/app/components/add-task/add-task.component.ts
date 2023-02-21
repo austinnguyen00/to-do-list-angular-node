@@ -18,19 +18,19 @@ export class AddTaskComponent {
 
   // FormGroup helps grouping multiple form controls
   // that are related
-  profileForm = new FormGroup({
+  form = new FormGroup({
     // FormControl takes care of each form component
-    task: new FormControl<string>('', Validators.required,),
+    task: new FormControl<string>('', Validators.required),
     reminder: new FormControl<boolean>(false),
   });
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
     // Check if the form values are filled
-    if (this.profileForm.value.task) {
+    if (this.form.value.task == '') {
       const newTask: Task = {
-        text: this.profileForm.value.task,
-        reminder: this.profileForm.value.reminder || false,
+        text: this.form.value.task,
+        reminder: this.form.value.reminder || false,
       }
 
       // Emit new task as output
@@ -39,6 +39,7 @@ export class AddTaskComponent {
       // Reset the value after submission
       this.text = '';
       this.reminder = false;
+      this.form.reset();
     }
     else {
       alert('Please fill in the task!');
