@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { UiService } from 'src/app/services/ui.service';
 import { Task } from 'src/app/shared/models/Task'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',
@@ -12,9 +14,14 @@ export class AddTaskComponent {
   // EventEmitter that emit added task to parent component
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
 
-  // Init variables for task component
+  // Init variables
   text: string = '';
   reminder: boolean = false;
+  showAddTask: boolean = false;
+
+  // Keep track of subsctiption to the UiService.onToggle observable
+  // which is used to toggle the visibility of the add form
+  subscription: Subscription = new Subscription;
 
   // FormGroup helps grouping multiple form controls
   // that are related
@@ -24,8 +31,15 @@ export class AddTaskComponent {
     reminder: new FormControl<boolean>(false),
   });
 
+  constructor(private uiService: UiService) {
+    // Always listening for changes from the uiService observable to the value showAddTask 
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe(value => this.showAddTask = value);
+  }
+
   onSubmit() {
-    // TODO: Use EventEmitter with form value
+    // Use EventEmitter with form value
     // Check if the form values are filled
     if (this.form.value.task == '') {
       const newTask: Task = {

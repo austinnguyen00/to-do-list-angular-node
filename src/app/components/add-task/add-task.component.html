@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form *ngIf="showAddTask" [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-control">
     <label for="task">Task: </label>
     <input id="task" type="text" formControlName="task" />
