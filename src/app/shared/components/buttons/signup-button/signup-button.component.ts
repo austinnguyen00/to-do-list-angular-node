@@ -8,9 +8,10 @@ import { AuthService } from '@auth0/auth0-angular';
     </ng-container>
 
     <ng-template #loggedOut>
-      <button class="button__sign-up" (click)="handleSignUp()">Sign Up</button>
+      <button mat-raised-button class="button__sign-up" (click)="handleSignUp()">Sign Up</button>
     </ng-template>
   `,
+  styleUrls: ['./signup-button.component.scss']
 })
 export class SignupButtonComponent {
   constructor(public auth: AuthService) { }

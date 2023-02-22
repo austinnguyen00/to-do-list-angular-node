@@ -21,6 +21,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { LoginButtonComponent } from './shared/components/buttons/login-button/login-button.component';
 import { LogoutButtonComponent } from './shared/components/buttons/logout-button/logout-button.component';
 import { NavBarButtonsComponent } from './shared/components/navigation/nav-bar-buttons/nav-bar-buttons.component';
+import { NavBarComponent } from './shared/components/navigation/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NavBarButtonsComponent } from './shared/components/navigation/nav-bar-b
     UserProfileComponent,
     LoginButtonComponent,
     LogoutButtonComponent,
-    NavBarButtonsComponent
+    NavBarButtonsComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
