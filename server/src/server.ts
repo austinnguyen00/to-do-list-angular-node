@@ -11,6 +11,7 @@ dotenv.config();
 // to handle requests
 const taskController = require('./controllers/task');
 const translateController = require('./controllers/translate');
+const userController = require('./controllers/user');
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -31,6 +32,8 @@ app.get('/', (req, res) => {
 
 app.get('/api/tasks', taskController.getTasks);
 app.post('/api/tasks', taskController.addTask);
+
+app.get('/api/users', userController.getUsers);
 
 app.post('/api/translate', translateController.translateTask)
 
