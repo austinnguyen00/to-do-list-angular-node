@@ -25,6 +25,8 @@ import { NavBarButtonsComponent } from './shared/components/navigation/nav-bar-b
 import { NavBarComponent } from './shared/components/navigation/nav-bar/nav-bar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserItemComponent } from './components/user-item/user-item.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { HomeComponent } from './components/home/home.component';
     NavBarButtonsComponent,
     NavBarComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    UsersComponent,
+    UserItemComponent
   ],
   imports: [
     BrowserModule,
