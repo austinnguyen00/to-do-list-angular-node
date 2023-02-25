@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AuthModule } from '@auth0/auth0-angular';
 
@@ -14,7 +16,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { SignupButtonComponent } from './shared/components/buttons/signup-button/signup-button.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -22,6 +23,8 @@ import { LoginButtonComponent } from './shared/components/buttons/login-button/l
 import { LogoutButtonComponent } from './shared/components/buttons/logout-button/logout-button.component';
 import { NavBarButtonsComponent } from './shared/components/navigation/nav-bar-buttons/nav-bar-buttons.component';
 import { NavBarComponent } from './shared/components/navigation/nav-bar/nav-bar.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +39,16 @@ import { NavBarComponent } from './shared/components/navigation/nav-bar/nav-bar.
     LoginButtonComponent,
     LogoutButtonComponent,
     NavBarButtonsComponent,
-    NavBarComponent
+    NavBarComponent,
+    AdminComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'admin', component: AdminComponent },
+    ]),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
