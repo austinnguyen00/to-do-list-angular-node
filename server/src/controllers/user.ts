@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { Request, Response } from 'express';
+import { User } from '../../../src/app/shared/models/User';
 
 const getUsers = async (req: Request, res: Response) => {
   try {
@@ -19,7 +20,12 @@ const getUsers = async (req: Request, res: Response) => {
       'https://dev-ghfmxbn22dct1vdh.us.auth0.com/api/v2/users',
       options,
     );
-    const users = response.data;
+    // Receive an array of user objects from auth0 management API
+    let users = response.data;
+
+    // Map the array of user objects with bunch of information 
+    // to a customize array of user objects with two properties of email and nickname
+    users = users.map((user: any) => ({ email: user.email, nickname: user.nickname }));
     console.log(users);
     res.status(200).json(users);
   } catch (error) {
