@@ -25,7 +25,7 @@ const getUsers = async (req: Request, res: Response) => {
     // Map the array of user objects with bunch of information 
     // to a customize array of user objects with two properties of email and nickname
     users = users.map((user: any) => ({ email: user.email, nickname: user.nickname }));
-    console.log(users);
+    // console.log(users);
     res.status(200).json(users);
   } catch (error) {
     console.error('Error retrieving users:', error);

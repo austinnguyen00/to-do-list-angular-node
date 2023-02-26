@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 app.get('/api/tasks', taskController.getTasks);
 app.post('/api/tasks', taskController.addTask);
 
-app.get('api/tasks/:username', taskController.getTasksByUser)
+app.get('/api/tasks/:username/', taskController.getTasksByUser)
 
 app.get('/api/users', userController.getUsers);
 
