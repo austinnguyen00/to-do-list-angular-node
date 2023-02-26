@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/shared/models/User';
+import { User } from '../../shared/models/User'
 
 @Component({
   selector: 'app-user-item',

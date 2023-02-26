@@ -8,11 +8,7 @@ import { TranslateService } from 'src/app/services/translate.service';
   styleUrls: ['./task-item.component.scss']
 })
 export class TaskItemComponent {
-  @Input() task: Task = {
-    id: 1,
-    text: 'Doctors Appointment',
-    reminder: true,
-  };
+  @Input() task: Task;
   @Input() language: string = 'English';
 
   // Languages for translation

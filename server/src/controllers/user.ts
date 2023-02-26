@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
 import { Request, Response } from 'express';
-import { User } from '../../../src/app/shared/models/User';
 
 const getUsers = async (req: Request, res: Response) => {
   try {
