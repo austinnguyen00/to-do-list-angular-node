@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { UiService } from 'src/app/services/ui.service';
 import { Task } from 'src/app/shared/models/Task'
 import { Subscription } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-task',
@@ -17,6 +18,7 @@ export class AddTaskComponent {
   // Init variables
   text: string = '';
   reminder: boolean = false;
+  username: string = '';
   showAddTask: boolean = false;
 
   // Keep track of subsctiption to the UiService.onToggle observable
@@ -31,20 +33,28 @@ export class AddTaskComponent {
     reminder: new FormControl<boolean>(false),
   });
 
-  constructor(private uiService: UiService) {
+  constructor(private uiService: UiService, private userService: UserService) {
     // Always listening for changes from the uiService observable to the value showAddTask 
     this.subscription = this.uiService
       .onToggle()
       .subscribe(value => this.showAddTask = value);
   }
 
+  ngOnInit(): void {
+    // Getting current authenticated user by subscribe to the userService
+    this.userService
+      .getCurrentUser()
+      .subscribe(user => this.username = user.nickname);
+  }
+
   onSubmit() {
     // Use EventEmitter with form value
     // Check if the form values are filled
-    if (this.form.value.task == '') {
+    if (this.form.value.task !== '') {
       const newTask: Task = {
-        text: this.form.value.task,
+        text: this.form.value.task ? this.form.value.task : '', // check again if task value is null or undefined
         reminder: this.form.value.reminder || false,
+        username: this.username
       }
 
       // Emit new task as output
