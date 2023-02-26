@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { Task } from 'src/app/shared/models/Task';
 
 @Injectable({
@@ -20,5 +20,10 @@ export class TaskService {
   // Method add new task to database
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task);
+  }
+
+  // Method ot retrieve tasks by username 
+  getTasksByUser(username: string | null | undefined): Observable<Task[]> {
+    return this.http.get<Task[]>(this.apiUrl + '/' + username);
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { TaskService } from 'src/app/services/task.service';
+import { UserService } from 'src/app/services/user.service';
 import { Task } from 'src/app/shared/models/Task';
 
 @Component({
@@ -10,15 +12,17 @@ import { Task } from 'src/app/shared/models/Task';
 export class TasksComponent {
   tasks: Task[] = [];
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private userService: UserService) { }
 
   ngOnInit(): void {
-    // Calling taskService getTasks method and then
-    // subscribe to the return observable where
-    // subscribe method first argument is data from the observable
-    this.taskService
-      .getTasks()
-      .subscribe(data => this.tasks = data);
+    // First calling getCurrentUser service and subscribe to the observable
+    // to get the current user
+    // Then calling taskService getTasksByUser method and then
+    // subscribe to the return observable to get the tasks belong to the user if the user exists
+    this.userService.getCurrentUser()
+      .subscribe(user => this.taskService
+        .getTasksByUser(user?.nickname)
+        .subscribe(data => this.tasks = data));
   }
 
   addTask(task: Task) {
