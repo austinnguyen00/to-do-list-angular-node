@@ -23,7 +23,7 @@ const getTasks = (req: Request, res: Response) => {
 const addTask = (req: Request, res: Response) => {
   console.log('Req', req.body);
   // Insert query to add new task with given text and reminder
-  pool.query(`INSERT INTO tasks ("text", "reminder") VALUES ($1, $2)`, [req.body.text, req.body.reminder],
+  pool.query(`INSERT INTO tasks ("text", "reminder", "username") VALUES ($1, $2, $3)`, [req.body.text, req.body.reminder, req.body.username],
     (error: Error, results: any) => {
       if (error) {
         throw error
@@ -33,7 +33,20 @@ const addTask = (req: Request, res: Response) => {
     })
 }
 
+const getTasksByUser = (req: Request, res: Response) => {
+  // Query to retrieve tasks of the given user in the URL
+  const username = req.params.username;
+  pool.query(`SELECT * FROM Tasks WHERE username = $1`, [username], (error: Error, results: any) => {
+    if (error) {
+      throw error
+    }
+    console.log('Results:', results.rows)
+    res.status(200).json(results.rows)
+  })
+}
+
 module.exports = {
   getTasks,
   addTask,
+  getTasksByUser,
 }
