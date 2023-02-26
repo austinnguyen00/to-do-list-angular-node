@@ -42,9 +42,10 @@ export class AddTaskComponent {
 
   ngOnInit(): void {
     // Getting current authenticated user by subscribe to the userService
+    // Only update username if there exists an authenticated user
     this.userService
       .getCurrentUser()
-      .subscribe(user => this.username = user.nickname);
+      .subscribe(user => this.username = user?.nickname);
   }
 
   onSubmit() {
