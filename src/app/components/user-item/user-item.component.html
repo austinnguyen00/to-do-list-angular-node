@@ -1,3 +1,12 @@
 <div class="user">
-  <h3>{{ user.nickname }}</h3>
+  <div class="user-header">
+    <h3>{{ user.nickname }}</h3>
+    <button (click)="toggleTasks()" mat-icon-button>
+      <mat-icon *ngIf="!showTasks">arrow_downward</mat-icon>
+      <mat-icon *ngIf="showTasks">arrow_upward</mat-icon>
+    </button>
+  </div>
+  <div class="user-tasks" *ngIf="showTasks">
+    <p *ngFor="let task of tasks">{{ task.text }}</p>
+  </div>
 </div>

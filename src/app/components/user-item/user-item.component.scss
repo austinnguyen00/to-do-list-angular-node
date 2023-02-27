@@ -4,7 +4,9 @@
   // cursor: pointer;
   -webkit-box-shadow: 1px 1px 10px 1px rgba(27, 27, 27, 0.25);
   box-shadow: 1px 1px 10px 1px rgba(27, 27, 27, 0.25);
+}
 
+.user-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,4 +15,8 @@
     margin-bottom: 0px;
     font-weight: 600;
   }
+}
+
+.user-tasks {
+  margin-top: 1.5rem;
 }
