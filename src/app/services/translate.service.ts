@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class TranslateService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'http://localhost:5000/api/translate';
+  private apiUrl = environment.apiUrl + '/translate';
 
   // Method for error handler
   private handleError(error: HttpErrorResponse) {
