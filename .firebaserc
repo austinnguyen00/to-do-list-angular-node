@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "to-do-list-angular-node": {
+      "hosting": {
+        "to-do-list-angular": [
+          "to-do-list-angular-node"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "to-do-list-angular-node"
+  }
+}
